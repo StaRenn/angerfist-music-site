@@ -1,0 +1,31 @@
+.home-page
+  width: 100vw
+  height: 100vh
+
+.home-page__player-container
+  position: absolute
+  bottom: 0
+  width: 70%
+  left: 0
+  height: 10%
+  background: #2e2e2e
+  display: flex
+  justify-content: left
+  align-items: center
+  .player
+    width: 75%
+
+@media screen and (min-width: 767px) and (max-width: 1024px)
+  .home-page
+    .player__time-line__input
+      min-width: 225px !important
+
+@media screen and (max-width: 1024px)
+  .angerfist-photo
+    display: none
+  .home-page
+    .player
+      width: 100% !important
+      justify-content: space-evenly !important
+  .home-page__player-container
+    width: 100%

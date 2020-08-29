@@ -1,0 +1,75 @@
+.player
+  z-index: 1000
+  height: 100%
+  width: 100%
+  display: flex
+  align-items: center
+  justify-content: space-around
+  audio
+    display: none
+
+.player__play-button, .player__pause-button
+  margin: 0 10px 0 10px
+  background-size: 100% 100%
+  width: 5vh
+  height: 5vh
+  cursor: pointer
+
+.player__play-button.inactive
+  pointer-events: none
+
+.player__pause-button
+  background-image: url(/src/images/pause.png)
+
+.player__play-button
+  background-image: url(/src/images/play.png)
+
+.player__time-line
+  display: flex
+  left: 22vw
+  justify-content: center
+  align-items: center
+  .player__time-line__input
+    width: 20vw
+    min-width: 150px
+    vertical-align: middle
+    outline: none
+    border: none
+    padding: 0
+    background: none
+    margin: 10px
+  .player__time-line__input.inactive
+    pointer-events: none
+  .player__current-time, .player__total-time
+    margin: 5px
+    width: 2.25rem
+    color: white
+    font-size: 1rem
+    font-family: 'Montserrat', sans-serif
+
+.player__volume
+  margin: 0 10px 0 10px
+  width: auto
+  display: flex
+  justify-content: center
+  align-items: center
+  span
+    background-image: url(/src/images/sound.png)
+    background-size: 100% 100%
+    width: 3vh
+    height: 3vh
+    margin-right: 1vw
+  .player__volume__input
+    width: 10vw
+    z-index: 12
+    vertical-align: middle
+    outline: none
+    border: none
+    padding: 0
+    background: none
+    margin: 0
+
+
+@media screen and (max-width: 767px)
+  .player__time-line__input
+    min-width: 25vw !important

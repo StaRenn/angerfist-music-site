@@ -1,0 +1,43 @@
+.change-track-box__container__controls
+  position: absolute
+  left: -3vw
+  height: 15vw
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+.change-track-box__container__controls__prev,
+.change-track-box__container__controls__next
+  cursor: pointer
+  width: auto
+  position: relative
+  height: 2vw
+  z-index: 100
+  transition: 0.2s
+  &__text
+    font-size: 1rem
+    color: white
+    font-family: "Montserrat", sans-serif
+    margin: 0
+    padding: 0
+  &__arrow
+    margin: 0
+    position: absolute
+    width: 50px
+    height: 10px
+    background-image: url(/src/images/arrow_long.png)
+    background-size: 100% 100%
+    background-repeat: no-repeat
+
+.change-track-box__container__controls__prev
+  &__arrow
+    transform: rotate(180deg)
+
+.change-track-box__container__controls__next
+  margin-bottom: 3vh
+
+.change-track-box__container__controls__prev:hover
+  margin-left: -0.8vw
+
+.change-track-box__container__controls__next:hover
+  margin-left: 0.8vw

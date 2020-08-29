@@ -1,0 +1,38 @@
+.header
+  width: 100%
+  margin-left: 0
+  height: 10%
+  display: flex
+  justify-content: center
+  align-items: center
+  color: white
+  position: absolute
+  font-family: 'Roboto', sans-serif
+  background: transparent
+  font-size: 1.5rem
+
+.header__logo
+  z-index: 10000
+  position: absolute
+  left: 3.5vw
+  height: 5vh
+  width: 10vw
+  min-width: 150px
+  background-image: url(/src/images/ang_font.png)
+  background-repeat: no-repeat
+  background-position: center
+  background-size: 100% auto
+
+.header__nav
+  display: flex
+  justify-content: space-around
+  align-items: center
+  position: relative
+  width: 40vw
+  min-width: 270px
+
+@media screen and (max-width: 767px)
+  .home-page__sidebar
+    display: none
+  .header__logo
+    display: none

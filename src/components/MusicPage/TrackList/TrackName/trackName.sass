@@ -1,0 +1,25 @@
+.track-list__track
+  margin: 0
+  font-family: "Share+Tech+Mono", sans-serif
+  font-size: 1.25rem
+  list-style-type: none
+  color: white
+  padding: 0.5vw
+  cursor: pointer
+  transition: 0.05s
+
+.track-list__track.active
+  color: #12ffff
+  text-shadow: 0 0 10px #12ffff, 0 0 5px #12ffff
+
+.track-list__track:not(.active):not(.paused):hover
+  text-shadow: 0 0 10px white, 0 0 5px white, 0 0 1px white
+
+@media screen and (max-width: 1023px)
+  .track-list__track
+    font-size: 1.75rem
+
+@media screen and (max-width: 767px)
+  .track-list__track
+    margin: 5px 0 5px 0
+    font-size: 1.5rem

@@ -1,0 +1,36 @@
+.track-list
+  bottom: 5vh
+  left: 5vh
+  height: auto
+  width: auto
+  position: absolute
+  display: flex
+  align-items: center
+  justify-content: center
+  background: transparent
+  border-radius: 15%
+  .track-list__first-column,
+  .track-list__second-column
+    padding: 0
+    margin: 20px
+    height: 100%
+    width: auto
+
+@media screen and (max-width: 1023px)
+  .track-list
+    width: 100%
+    left: 50%
+    transform: translateX(-50%)
+    bottom: 0
+  .track-list__first-column,
+  .track-list__second-column
+    line-height: 30px
+
+@media screen and (max-width: 767px)
+  .track-list
+    bottom: 0
+    height: 30vh
+  .track-list__first-column,
+  .track-list__second-column
+    width: 40vw
+    line-height: normal

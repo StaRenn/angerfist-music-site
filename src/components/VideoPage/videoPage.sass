@@ -1,0 +1,47 @@
+.video-page
+  position: absolute
+  width: 100vw
+  margin: 0
+  height: 100vh
+  overflow: hidden
+  color: #d7dbdd
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 1000
+
+.youtube-video-container
+  z-index: -1
+  bottom: 0
+  width: 100%
+  height: 90%
+  position: absolute
+
+.video-left-col, .video-right-col
+  position: absolute
+  width: 50vw
+  height: 100vh
+  background-size: 100% 100%
+  transition: 0.75s ease
+
+.video-left-col
+  left: 0
+  &.opened
+    left: -50%
+
+.video-right-col
+  right: 0
+  &.opened
+    right: -50%
+
+.defqon-2018
+  background-image: url(/src/images/defqon2018.jpg)
+
+.moh-2019
+  background-image: url(/src/images/moh2019.jpg)
+
+.qlimax-2016
+  background-image: url(/src/images/qlimax2016.jpg)
+
+.tomorrowland-2017
+  background-image: url(/src/images/tomorrowland2017.jpg)

@@ -1,0 +1,26 @@
+.page-tourdates
+  overflow: hidden
+  width: 100vw
+  height: 90vh
+  margin-top: 10vh
+  display: flex
+  justify-content: center
+  align-items: center
+  position: absolute
+
+.page-tourdates__wheel
+  position: relative
+  display: flex
+  justify-content: center
+  align-items: center
+  width: auto
+  transition: 0.25s cubic-bezier(0,0,.39,1)
+  height: 300px
+
+@media screen and (max-width: 1024px)
+  .page-tourdates__wheel
+    height: 200px
+
+@media screen and (max-width: 767px)
+  .page-tourdates__wheel
+    height: 150px

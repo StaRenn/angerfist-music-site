@@ -1,0 +1,27 @@
+.close-video
+  cursor: pointer
+  position: absolute
+  border-top-left-radius: 20vh
+  border-bottom-left-radius: 20vh
+  z-index: -1
+  top: 35%
+  width: 100px
+  height: 40vh
+  left: -100px
+  background: rgba(10,10,10,0.75)
+  font-family: "Share+Tech+Mono", sans-serif
+  font-size: 1.5vw
+  display: flex
+  justify-content: center
+  align-items: center
+  transition: 0.2s
+
+.close-video:hover
+  text-shadow: 0 0 20px white, 0 0 10px white
+  background: rgba(15,15,15,0.75)
+
+@media screen and (max-width: 1024px)
+  .close-video
+    left: -10vw
+    width: 10vw
+    font-size: 1.5rem

@@ -1,0 +1,28 @@
+.header__nav__link__text
+  text-decoration: none
+  color: white
+  transition: 0.25s
+
+.header__nav__link
+  z-index: 10000
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+
+.header__nav__link.active
+  pointer-events: none
+  cursor: default
+
+.header__nav__link:not(.active):hover
+  text-shadow: 0 0 20px white, 0 0 10px white
+
+.header__nav__link__span.hidden
+  opacity: 0
+
+.header__nav__link__span
+  pointer-events: none
+  box-shadow: 0 1px 7px #12ffff, 0 1px 14px #12ffff
+  height: 3px
+  background: #12ffff
+  color: rgba(0,0,0,0)
