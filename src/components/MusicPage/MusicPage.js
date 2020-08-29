@@ -13,7 +13,7 @@ export class MusicPage extends Component {
         currentTrackNumber: null,
     };
 
-    changeAlbum = (activeAlbumID) => {
+    changeAlbum = (activeAlbumID) => { //function so i can set state of current class from other class
         if (this.state.activeAlbumID === activeAlbumID) return null;
         this.setState({
             activeAlbumID: activeAlbumID,

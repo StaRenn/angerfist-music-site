@@ -64,6 +64,11 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin({filename: 'style.css'}),
-        new HtmlWebpackPlugin()
+        new HtmlWebpackPlugin({
+            filename: path.join(__dirname, '/public/index.html'),
+            hash: true,
+            inject: false,
+            template: path.join(__dirname, '/index.html'),
+        })
     ]
 };
