@@ -9,14 +9,14 @@ AlbumCard.propTypes = {
 export function AlbumCard({imgSrc, releaseDate, active, onClick, id}) {
     return (
         <div
-            className={`music-page__wheel__slide ${active ? "active" : ""}`}
+            className={`album-card ${active ? "active" : ""}`}
             onClick={() => onClick(id)}
         >
-            <span className="music-page__wheel__slide__logo" style={{
+            <span className="album-card__logo" style={{
                 backgroundImage: `url(${imgSrc})`,
                 backgroundSize: `100% 100%`
             }}/>
-            <p className="music-page__wheel__slide__date">{releaseDate}</p>
+            <p className="album-card__date">{releaseDate}</p>
         </div>
     );
 }

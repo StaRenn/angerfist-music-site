@@ -4,15 +4,12 @@ import "./tourCard.sass";
 
 TourCard.proptypes = {
     tourdate: PropTypes.string.isRequired,
-    active: PropTypes.bool.isRequired,
-    onClick: PropTypes.func.isRequired,
-    id: PropTypes.number.isRequired
 }
 
 
-export function TourCard({tourdate, active, onClick, id}) {
+export function TourCard({tourdate}) {
     return (
-        <div onClick={() => onClick(id)} className={`page-tourdates__wheel__slide ${active ? "active" : ""}`}>
+        <div className={`page-tourdates__wheel__slide`}>
             <h3 className="page-tourdates__wheel__slide__date">{tourdate.date}</h3>
             <h2 className="page-tourdates__wheel__slide__name">{tourdate.clubname}</h2>
             <p className="page-tourdates__wheel__slide__location">{tourdate.location}</p>

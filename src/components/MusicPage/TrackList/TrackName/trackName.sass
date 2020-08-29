@@ -15,9 +15,14 @@
 .track-list__track:not(.active):not(.paused):hover
   text-shadow: 0 0 10px white, 0 0 5px white, 0 0 1px white
 
-@media screen and (max-width: 1023px)
+@media screen and (max-width: 1024px)
   .track-list__track
-    font-size: 1.75rem
+    font-size: 2rem
+    text-align: center
+
+@media screen and (max-height: 500px)
+  .track-list__track
+    font-size: 1.25rem !important
 
 @media screen and (max-width: 767px)
   .track-list__track

@@ -15,29 +15,29 @@ export class Player extends Component {
     };
 
     // used to convert song duration to time (250 => 4:10)
-    parseIntToTime(int) {
+    parseSecondsToMMSS(int) {
         int = Math.ceil(int);
         return `${Math.floor(int/60)}:${int%60 >= 10 ? int%60 : "0" + (int%60).toString()}`
     }
 
     handleTimeChange = (ev, actionType) => {
-        this.handleChangeSongState(false);
+        this.changeSongState(false); //pause when changing time
         this.timeLine.value = ev.target.value;
         this.timeLine[actionType === "mouse" ? "onmousemove" : "ontouchmove"] = (ev) => {
             this.timeLine.value = ev.target.value;
-            this.current_time.innerHTML = this.parseIntToTime(ev.target.value);
+            this.current_time.innerHTML = this.parseSecondsToMMSS(ev.target.value);
         };
 
         this.timeLine[actionType === "mouse" ? "onmouseup" : "ontouchend"] = () => {
             this.timeLine[actionType === "mouse" ? "onmousemove" : "ontouchmove"] = null; //resetting onmousemove to prevent bugs
             this.audio.currentTime = ev.target.value;
-            this.handleChangeSongState(true);
+            this.changeSongState(true);
         }
     }
 
-    handleChangeSongState = (play) => {
+    changeSongState = (play) => {
         if(play) {
-            this.audio.play().catch(err => this.setState({isSongPlaying: "paused"}));
+            this.audio.play().catch(err => this.changeSongState(false));
         }else{
             this.audio.pause();
         }
@@ -65,11 +65,11 @@ export class Player extends Component {
     //pausing song and resetting timeLine and current time if song is being changed
     componentWillReceiveProps(nextProps, nextContext) {
         this.audio.src = "";
-        this.handleChangeSongState(false);
+        this.changeSongState(false);
         this.resetToDefault();
     }
     componentWillUnmount() {
-        this.handleChangeSongState(false);
+        this.changeSongState(false);
     }
 
     componentDidMount(){
@@ -81,13 +81,13 @@ export class Player extends Component {
         this.audio.onloadedmetadata = function() {
             this.audio.volume = this.volumeLevel.value/100;
             this.setState({currentSongDuration: this.audio.duration});
-            autoplay ? this.handleChangeSongState(true) : null
+            autoplay ? this.changeSongState(true) : null
         }.bind(this);
 
         //creating interval to update timeLine
         this.audio.onplay = () => {
             this.currentTimeInterval = setInterval(() => {
-                this.current_time.innerHTML = this.parseIntToTime(this.audio.currentTime);
+                this.current_time.innerHTML = this.parseSecondsToMMSS(this.audio.currentTime);
                 this.timeLine.value = this.audio.currentTime;
             }, 10)
         };
@@ -102,7 +102,7 @@ export class Player extends Component {
 
         this.audio.onended = () => {
             this.resetToDefault();
-            this.handleChangeSongState(false)
+            this.changeSongState(false)
         }
     }
 
@@ -119,7 +119,7 @@ export class Player extends Component {
                 />
                 <span 
                     className={`player__${isSongPlaying ? "pause" : "play"}-button ${currentSongDuration === null ? "inactive" : ""}`}
-                    onClick={() => this.handleChangeSongState(!isSongPlaying)}
+                    onClick={() => this.changeSongState(!isSongPlaying)}
                 />
                 <div className="player__time-line">
                     <span
@@ -133,7 +133,7 @@ export class Player extends Component {
                         min = "0"
                         max = {`${this.state.currentSongDuration}`}
                     />
-                    <span className="player__total-time">{this.parseIntToTime(this.state.currentSongDuration)}</span>
+                    <span className="player__total-time">{this.parseSecondsToMMSS(this.state.currentSongDuration)}</span>
                 </div>
                 <div className="player__volume">
                     <span/>

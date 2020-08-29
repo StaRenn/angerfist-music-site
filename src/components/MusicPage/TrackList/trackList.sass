@@ -11,17 +11,21 @@
   border-radius: 15%
   .track-list__first-column,
   .track-list__second-column
+    display: flex
+    justify-content: center
+    flex-direction: column
     padding: 0
     margin: 20px
     height: 100%
     width: auto
 
-@media screen and (max-width: 1023px)
+@media screen and (max-width: 1024px)
   .track-list
     width: 100%
     left: 50%
     transform: translateX(-50%)
     bottom: 0
+    height: calc(50vh - 100px)
   .track-list__first-column,
   .track-list__second-column
     line-height: 30px
@@ -29,8 +33,12 @@
 @media screen and (max-width: 767px)
   .track-list
     bottom: 0
-    height: 30vh
+    height: calc(50vh - 75px)
   .track-list__first-column,
   .track-list__second-column
     width: 40vw
     line-height: normal
+
+@media screen and (max-height: 500px)
+  .track-list
+    height: auto

@@ -1,4 +1,4 @@
-.music-page__wheel__slide
+.album-card
   margin: 50px
   position: relative
   display: flex
@@ -11,14 +11,14 @@
   transition: 0.3s
   background: rgba(255,255,255,0.2)
 
-.music-page__wheel__slide__logo
+.album-card__logo
   position: absolute
   transition: 0.3s
   width: 60%
   height: 60%
   z-index: 12
 
-.music-page__wheel__slide__date
+.album-card__date
   z-index: 11
   margin: 0
   width: 100%
@@ -31,30 +31,35 @@
   font-family: "Montserrat", sans-serif
   font-size: 1.25rem
 
-.music-page__wheel__slide:not(.active):hover
+.album-card:not(.active):hover
   cursor: pointer
   transform: scale(1.1)
-.music-page__wheel__slide:after
+.album-card:after
   content: ""
   width: 100%
   height: 100%
   z-index: 13
   background: transparent
-.music-page__wheel__slide.active
+.album-card.active
   transform: scale(1.25)
   pointer-events: none
-  .music-page__wheel__slide__logo
+  .album-card__logo
     width: 100%
     height: 100%
 
 @media screen and (max-width: 1024px)
-  .music-page__wheel__slide
+  .album-card
     height: 200px
     width: 200px
     margin: 40px
 
+@media screen and (max-height: 500px)
+  .album-card
+    max-width: 30vh
+    max-height: 30vh
+
 @media screen and (max-width: 767px)
-  .music-page__wheel__slide
+  .album-card
     height: 150px
     width: 150px
     margin: 25px

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {musicAlbums} from "../../database";
 import Player from "../Player";
-import CarouselSlider from "../CarouselSlider";
 import "./musicPage.sass";
 import AlbumCard from "./AlbumCard/";
 import TrackList from "./TrackList/";
+import {Swiper, SwiperSlide} from "swiper/react";
 
 export class MusicPage extends Component {
 
@@ -13,7 +13,7 @@ export class MusicPage extends Component {
         currentTrackNumber: null,
     };
 
-    changeStateFromCarousel = (activeAlbumID) => { //function so i can set state of current class from other class
+    changeAlbum = (activeAlbumID) => { //function so i can set state of current class from other class
         if (this.state.activeAlbumID === activeAlbumID) return null;
         this.setState({
             activeAlbumID: activeAlbumID,
@@ -36,6 +36,14 @@ export class MusicPage extends Component {
         const {currentTrackNumber, activeAlbumID} = this.state;
         const albumNames = Object.keys(musicAlbums);
         const activeAlbumName = this.getCurrentAlbumName();
+        const breakpoints = {
+            1600: {slidesPerView: 4},
+            1400: {slidesPerView: 3.5},
+            850: {slidesPerView: 3},
+            500: {slidesPerView: 2.5},
+            350: {slidesPerView: 1.75},
+            0: {slidesPerView: 1.35}
+        }
         return (
             <div className="music-page page">
                 <span className="music-page__background" style={{backgroundImage: `url(${musicAlbums[activeAlbumName].albumImagePath})`}}/>
@@ -48,21 +56,28 @@ export class MusicPage extends Component {
                     onClick={this.handleSelectTrack}
                     currentTrackNumber={currentTrackNumber}
                 />
-                <CarouselSlider
-                    parentClassName={"music-page"}
-                    onChange={this.changeStateFromCarousel}
-                    activeSlideID={activeAlbumID}
+                <Swiper
+                    initialSlide={activeAlbumID}
+                    slideToClickedSlide={true}
+                    preventClicks={true}
+                    slidesPerView={4}
+                    centeredSlides={true}
+                    onSlideChange={({activeIndex}) => this.changeAlbum(activeIndex)}
+                    breakpoints={breakpoints}
                 >
                     {albumNames.map((album, index) =>
-                        <AlbumCard
-                            key={index}
-                            id={index}
-                            onClick={this.changeStateFromCarousel}
-                            imgSrc={musicAlbums[album].albumImagePath}
-                            releaseDate={musicAlbums[album].albumReleaseDate}
-                            active={activeAlbumName === album}
-                        />)}
-                </CarouselSlider>
+                        <SwiperSlide key={index}>
+                                <AlbumCard
+                                    key={index}
+                                    id={index}
+                                    onClick={this.changeAlbum}
+                                    imgSrc={musicAlbums[album].albumImagePath}
+                                    releaseDate={musicAlbums[album].albumReleaseDate}
+                                    active={activeAlbumName === album}
+                                />
+                        </SwiperSlide>
+                    )}
+                </Swiper>
             </div>
         );
     }

@@ -39,6 +39,17 @@
   height: 100vh
   z-index: -1
 
-@media screen and (max-width: 1023px)
+.swiper-slide
+  display: flex
+  justify-content: center
+  align-items: center
+
+@media screen and (max-width: 1024px)
   .music-page__background
     background-size: auto 100%
+
+@media screen and (max-height: 500px)
+  .music-page__background
+    background-size: auto 100%
+  .swiper-container
+    bottom: 17.5vh

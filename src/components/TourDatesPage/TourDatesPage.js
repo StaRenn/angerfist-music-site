@@ -1,39 +1,41 @@
 import React, {Component} from 'react';
 import {tourdates} from "../../database";
-import CarouselSlider from "../CarouselSlider";
 import "./tourDatesPage.sass";
 import TourCard from "./TourCard/";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper.scss';
 
 
 export class TourDatesPage extends Component {
-
-    state = {
-        centeredSlide: 5
-    };
-
-    setActiveSlide = (slideId) => {
-        this.setState({
-            centeredSlide: slideId
-        })
-    };
-
     render() {
+        const centeredSlide = Math.floor(tourdates.length / 2)
+        const breakpoints = {
+            1600: {slidesPerView: 3.5},
+            1400: {slidesPerView: 3},
+            600: {slidesPerView: 2.5},
+            400: {slidesPerView: 1.75},
+            0: {slidesPerView: 1}
+        }
         return (
             <div className="page-tourdates page">
-                <CarouselSlider
-                    parentClassName={"page-tourdates"}
-                    activeSlideID={this.state.centeredSlide}
-                    onChange={this.setActiveSlide}
+                <Swiper
+                    spaceBetween={50}
+                    initialSlide={centeredSlide}
+                    slideToClickedSlide={true}
+                    preventClicks={true}
+                    slidesPerView={3.5}
+                    centeredSlides={true}
+                    breakpoints={breakpoints}
                 >
                     {tourdates.map((tourdate, index) =>
-                        <TourCard
-                            key={index}
-                            tourdate={tourdate}
-                            active={index === this.state.centeredSlide}
-                            id={index}
-                            onClick={this.setActiveSlide}
-                        />)}
-                </CarouselSlider>
+                        <SwiperSlide key={index}>
+                            <TourCard
+                                key={index}
+                                tourdate={tourdate}
+                            />
+                        </SwiperSlide>
+                        )}
+                </Swiper>
             </div>
         );
     }
