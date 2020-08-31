@@ -69,13 +69,13 @@ export class VideoPage extends Component {
                     <CloseVideoButton onClick={this.handleCloseVideoClick} />
                     <VideoBox
                         onClick={this.handleOpenVideoClick}
-                        videoId={videoIds[0]}
+                        videoId={videoIds[2]}
                         additionalClassName={"qlimax-2016"}
                         title={"ANGERFIST AT QLIMAX 2016"}
                     />
                     <VideoBox
                         onClick={this.handleOpenVideoClick}
-                        videoId={videoIds[1]}
+                        videoId={videoIds[3]}
                         additionalClassName={"tomorrowland-2017"}
                         title={"ANGERFIST AT TOMORROWLAND 2017"}
                     />
